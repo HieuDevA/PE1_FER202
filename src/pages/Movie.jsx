@@ -121,11 +121,15 @@ const Movie = () => {
   };
 
   const filterMoviesByName = (value, filteredMovies) => {
-    if (value.trim() === "") {
+    const searchTerm = value.toLowerCase();
+
+    if (searchTerm.trim() === "") {
       setFilteredMoviesByName(filteredMovies);
+      return;
     }
+
     setFilteredMoviesByName(
-      filteredMovies?.filter((m) => m.Title.includes(value))
+      filteredMovies?.filter((m) => m.Title.toLowerCase().includes(searchTerm))
     );
   };
 
